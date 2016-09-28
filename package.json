@@ -1,0 +1,24 @@
+{
+  "name": "powershell-terminal",
+  "version": "1.0.0",
+  "description": "A web-based powershell terminal",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacFearsome/powershell-terminal.git"
+  },
+  "author": "Jesse Russell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JacFearsome/powershell-terminal/issues"
+  },
+  "homepage": "https://github.com/JacFearsome/powershell-terminal#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "node-powershell": "^3.0.0"
+  }
+}
