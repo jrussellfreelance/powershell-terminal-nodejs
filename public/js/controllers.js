@@ -1,29 +1,17 @@
 var ctrl = angular.module('controllers', ['directives']);
 
 ctrl.controller('indexController', function($scope, $http) {
-  $scope.getOutput = function() {
-  	$http.get('/get-output').then(
-      function success(res) {
-        //console.log(res.data);
-        $('#terminal').append("<pre>" + res.data + "</pre>");
-      }, function error(res) {
-        console.log(res);
-      }
-    );
-  };
+  var socket = io();
+
   $scope.sendCommand = function() {
-    var data = {'command': $scope.command};
-    $http.post('/send-command', data).then(
-      function success(res) {
-        console.log("Command sent");
-        $('#input').val("");
-        $('#terminal').append("<pre>" + $scope.command + "</pre>");
-        setTimeout($scope.getOutput, 2000);
-      }, function error(res) {
-        console.log(res.data);
-      }
-    );
+    socket.emit('command', $scope.command)
+    $('#input').val("");
+    $('#terminal').append("<pre>" + $scope.command + "</pre>");
   };
+
+  socket.on('output', function(output) {
+    $('#terminal').append("<pre>" + output + "</pre>");
+  });
 
   var commands = [
     "Add-ProvisionedAppxPackage",

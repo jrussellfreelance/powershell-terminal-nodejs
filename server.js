@@ -1,6 +1,8 @@
 // Modules
 var express = require('express');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
 
 // Set server port
@@ -22,9 +24,13 @@ app.set('views', __dirname + '/public/views');
 // Routes
 require('./app/routes')(app);
 
+// IO
+require('./app/io')(io);
+
 // Start app
-app.listen(port);
-console.log("Server running on http://localhost:" + port);
+var server = http.listen(port, function(){
+  console.log("Server running on http://localhost:" + port);
+});
 
 // Expose app
 exports = module.exports = app;
