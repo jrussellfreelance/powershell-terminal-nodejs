@@ -1,4 +1,6 @@
 var shell = require('node-powershell');
+var fs = require('fs');
+var scriptsDir = process.cwd() + "/public/scripts/"
 
 module.exports = function(io) {
   io.on('connection', function(client) {
@@ -18,6 +20,10 @@ module.exports = function(io) {
           io.emit('output', output);
           ps.dispose();
         });
+    });
+
+    client.on('script', function(script) {
+      fs.writeFileSync((scriptsDir + script.title + ".ps1"), script.contents);
     });
   });
 }

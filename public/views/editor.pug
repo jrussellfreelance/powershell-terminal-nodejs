@@ -1,0 +1,9 @@
+extends layout.pug
+
+block content
+  div(ng-controller="editorController")
+    form
+      label Script Name:
+      input(type="text" ng-model="title")
+      button(ng-click="saveScript()") Save
+    div#editor

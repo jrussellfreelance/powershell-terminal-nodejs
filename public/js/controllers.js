@@ -1,16 +1,29 @@
 var ctrl = angular.module('controllers', ['directives']);
 
-ctrl.controller('indexController', function($scope, $http) {
+ctrl.controller('navController', function($scope) {
+
+});
+
+ctrl.controller('indexController', function($scope) {
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/pastel_on_dark");
+  editor.getSession().setMode("ace/mode/powershell");
   var socket = io();
 
   $scope.sendCommand = function() {
-    socket.emit('command', $scope.command)
-    $('#input').val("");
-    $('#terminal').append("<pre>" + $scope.command + "</pre>");
+    var command = editor.getValue();
+    socket.emit('command', command)
   };
 
+  $scope.saveScript = function() {
+    var title = $scope.title
+    var contents = editor.getValue();
+    var script = {'title': title, 'contents': contents}
+    socket.emit('script', script);
+  }
+
   socket.on('output', function(output) {
-    $('#terminal').append("<pre>" + output + "</pre>");
+    $('#output').text(output);
   });
 
   var commands = [
@@ -1299,7 +1312,19 @@ ctrl.controller('indexController', function($scope, $http) {
     "Write-Warnin"
   ];
 
-  $('#input').autocomplete({
+  $('#commands').autocomplete({
     source: commands
   });
+});
+
+ctrl.controller('editorController', function($scope) {
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setMode("ace/mode/powershell");
+
+  $scope.saveScript = function() {
+    var title = $scope.title
+    var contents = editor.getValue();
+    console.log(title + ": " + contents);
+  }
 });
