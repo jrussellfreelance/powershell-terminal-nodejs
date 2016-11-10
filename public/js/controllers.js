@@ -1316,15 +1316,3 @@ ctrl.controller('indexController', function($scope) {
     source: commands
   });
 });
-
-ctrl.controller('editorController', function($scope) {
-  var editor = ace.edit("editor");
-  editor.setTheme("ace/theme/monokai");
-  editor.getSession().setMode("ace/mode/powershell");
-
-  $scope.saveScript = function() {
-    var title = $scope.title
-    var contents = editor.getValue();
-    console.log(title + ": " + contents);
-  }
-});

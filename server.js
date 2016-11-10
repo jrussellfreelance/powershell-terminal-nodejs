@@ -15,11 +15,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve up static assests
-app.use(express.static(__dirname + '/public'));
+app.use('/powershell', express.static(__dirname + '/public'));
 
 // Set pug as view engine
 app.set('view engine', 'pug');
-app.set('views', __dirname + '/public/views');
+//app.set('views', __dirname + '/public/views');
 
 // Routes
 require('./app/routes')(app);
