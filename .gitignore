@@ -1,4 +1,6 @@
 node_modules
-public/libs
 *.ps1
 iisnode
+public/styles/.sass-cache
+web.config
+commands.txt
