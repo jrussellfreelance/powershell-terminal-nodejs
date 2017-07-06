@@ -1,5 +1,5 @@
 ## Powershell Terminal built with ASP.NET
-This is a web-based terminal / script runner for powershell.  It is built in Node.js.
+This is a web-based terminal / script runner for powershell.  It is built in Node.js. As a result, if Powershell is installed on a Linux or macOS device, this app should work.
 
 Creating a web-based powershell terminal enables you to remotely run powershell through your web browser.  While this introduces tons of security concerns, I think it is a powerful concept that is worth considering.
 
