@@ -2,12 +2,7 @@ extends layout.pug
 
 block content
   div(ng-controller="indexController")
-    button(ng-click="sendCommand()") Run Script
-    label Search Commands:
-    input(type="text" placeholder="Search commands...")#commands
-    label Save Script:
-    input(type="text" ng-model="title" placeholder="Script Title")
-    button(ng-click="saveScript()") Save
     div#terminal
+      button(ng-click="sendCommand()")#run Run Script
       pre#output
     div#editor

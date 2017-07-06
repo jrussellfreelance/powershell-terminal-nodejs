@@ -5,9 +5,20 @@ ctrl.controller('navController', function($scope) {
 });
 
 ctrl.controller('indexController', function($scope) {
+  var langTools = ace.require("ace/ext/language_tools")
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/pastel_on_dark");
   editor.getSession().setMode("ace/mode/powershell");
+  editor.setOptions({enableBasicAutocompletion: true});
+  var customCompleter = {
+    getCompletions: function (editor, session, pos, prefix, callback) {
+      callback(null, commands.map(function (key) {
+        return { name: key, value: key, score: "1", meta: key }
+      }));
+    }
+  };
+  langTools.addCompleter(customCompleter);
+
   var socket = io();
 
   $scope.sendCommand = function() {
@@ -15,18 +26,7 @@ ctrl.controller('indexController', function($scope) {
     socket.emit('command', command)
   };
 
-  $scope.saveScript = function() {
-    var title = $scope.title
-    var contents = editor.getValue();
-    var script = {'title': title, 'contents': contents}
-    socket.emit('script', script);
-  }
-
   socket.on('output', function(output) {
     $('#output').text(output);
-  });
-
-  $('#commands').autocomplete({
-    source: commands
   });
 });

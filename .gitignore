@@ -1,6 +1,2 @@
 node_modules
 *.ps1
-iisnode
-public/styles/.sass-cache
-web.config
-commands.txt
