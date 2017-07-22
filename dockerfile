@@ -4,5 +4,5 @@ WORKDIR /usr/src/powershell-terminal-nodejs
 COPY package.json /usr/src/powershell-terminal-nodejs/
 RUN npm install
 COPY . /usr/src/powershell-terminal-nodejs
-EXPOSE 7272
+EXPOSE 7878
 CMD [ "node", "server.js" ]
