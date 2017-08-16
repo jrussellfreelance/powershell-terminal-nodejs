@@ -1,7 +1,7 @@
 FROM jacfearsome/node
 
-ADD . /remote-admin
-WORKDIR /remote-admin
+ADD . /powershell-terminal-nodejs
+WORKDIR /powershell-terminal-nodejs
 RUN npm install
 EXPOSE 7878
 
