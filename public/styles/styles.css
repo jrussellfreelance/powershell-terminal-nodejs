@@ -1,0 +1,41 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0px auto;
+  padding: 0px; }
+
+pre {
+  white-space: pre;
+  text-align: left;
+  color: #fff; }
+
+input {
+  margin: 5px; }
+
+label {
+  margin: 5px; }
+
+button {
+  margin: 5px; }
+
+#terminal {
+  position: absolute;
+  top: 60%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  color: #fff;
+  border-top: 1px solid #8F938F;
+  background-color: #2c2827;
+}
+
+#output {
+  padding: 5px 1% 5px 1%;
+}
+
+#editor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 40%;
+  left: 0; }
