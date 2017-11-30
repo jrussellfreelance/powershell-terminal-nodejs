@@ -20,3 +20,6 @@ Run the app:
 `node server.js`
 
 And finally, go to http://localhost:7878/ in your web browser.
+
+Screenshot:
+![alt text](https://www.jesserussell.net/wp-content/uploads/2017/11/powershell-terminal-nodejs3.png)
